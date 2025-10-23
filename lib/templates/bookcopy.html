@@ -7,6 +7,11 @@
 </head>
 <body>
     <h1>Availabe books</h1>
+
+    <form method="POST">
+        {% csrf_token%}
+        {{form}}
+    </form>
 <a href="{% url 'index_page' %}">Go to Index Page</a>
 
 

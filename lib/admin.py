@@ -8,19 +8,19 @@ from .models import Librarian
 from .models import Library
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display=("first_name","last_name","year")
+    list_display=("first_name","last_name","year","enrollment_status","course")
 
 class LibraryAdmin(admin.ModelAdmin):
     list_display=("name","location")  
 
 class LibrarianAdmin(admin.ModelAdmin):
-    list_display=("first_name","last_name","gender","contact")   
+    list_display=("first_name","last_name","gender","library")   
 
 class BorrowingAdmin(admin.ModelAdmin):
     list_display=("borrow_date","student")
 
 class BookcopyAdmin(admin.ModelAdmin):
-    list_display=("book","status") 
+    list_display=("book","status","serial_number") 
 
 class BookAdmin(admin.ModelAdmin):
     list_display=("title","author")              

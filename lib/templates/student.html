@@ -1,19 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
+    {% load static %}
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>borrowing</title>
+    <title>Student</title>
+    <link rel ="stylesheet"  href="{% static ''%}">
 </head>
 <body>
     <h1>welcome</h1>
     <form method="POST">
         {% csrf_token%}
-        {{form}}
+        {{ form|crispy }}
+        <input type="submit">
     </form>
 
      
-     <p><a href="{% url 'index_page' %}">Go to Index Page</a></p>
+    <p><a href="{% url 'index_page' %}">Home Page</a></p>
 
 </body>
 </html>
