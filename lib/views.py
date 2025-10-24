@@ -27,11 +27,13 @@ def library_view(request):
 
 
 def add_student_view(request):
+    message = ''
     if request.method =="POST":
         student_form = StudentForm(request.POST)
 
         if student_form.is_valid():
             student_form.save()
+            message = "Student Added Successfully"
 
     else:
         student_form = StudentForm() 
@@ -39,6 +41,7 @@ def add_student_view(request):
 
     context = {
         'form': student_form,
+        'message': message,
     } 
 
     return render(request,"add_student.html",context)          

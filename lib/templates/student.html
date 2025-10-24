@@ -7,15 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student</title>
-    <link rel ="stylesheet"  href="{% static ''%}">
+    <link rel ="stylesheet"  href="{% static 'css/bootstrap.min.css'%}">
 </head>
 <body>
-    <h1>welcome</h1>
-    <form method="POST">
-        {% csrf_token%}
-        {{ form|crispy }}
-        <input type="submit">
-    </form>
+    <h1>Student Table</h1>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token%}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-success">
+        </form>
+        {% if msg %}
+            {{msg}}
+        {% endif %}
+
+    </div>
 
      
     <p><a href="{% url 'index_page' %}">Home Page</a></p>
