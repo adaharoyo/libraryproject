@@ -22,7 +22,7 @@ from lib.views import bookcopy_view,add_bookcopy_view
 from lib.views import borrowing_view,add_borrowing_view
 from lib.views import librarian_view,add_librarian_view
 from lib.views import library_view,add_library_view
-from lib.views import student_view,add_student_view
+from lib.views import student_view,add_student_view,edit_student_view,delete_student_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,5 +38,7 @@ urlpatterns = [
     path('add_librarian/',add_librarian_view,name="librarian_page"),
     path('add_borrowing/',add_borrowing_view,name="borrowing_page"),
     path('add_bookcopy/',add_bookcopy_view,name="bookcopy_page"),
-    path('add_book/',add_book_view,name='book_page')
-]
+    path('add_book/',add_book_view,name='book_page'),
+    path('edit_student/<int:student_id>/',edit_student_view,name="edit student page"),
+    path('delete_student/<int:student_id>/',delete_student_view,name="delete student page"),
+]    

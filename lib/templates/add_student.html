@@ -1,16 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
+    {% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student form</title>
+    <link rel ="stylesheet"  href="{% static 'css/bootstrap.min.css'%}">
+    
 </head>
 <body>
     <h1> Get any books</h1>
-    <form method="POST">
-        {% csrf_token%}
-        {{form}}
-    </form>
+    <div class = "container">
+        <form method="POST">
+            {% csrf_token%}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-success">
+        
+        </form>
+
+        {% if msg %}
+            {{msg}}
+        {% endif %}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Enrollment Status</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <th scope="row">{{student.id}}</th>
+                        <td>{{student.first_name}}</td>
+                        <td>{{student.last_name}}</td>
+                        <td>{{student.course}}</ttd>
+                        <td>{{student.year}}</td>    
+                        <td>{{student.gender}}</td>
+                        <td>{{student.enrollment_status}}</td>
+                        <td>
+                            <a href= "{% url 'edit student page' student.id %}" >Edit</a> |
+                            <a href= "{% url 'delete student page' student.id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+    </div>
   <a href="{% url 'index_page' %}">Go to Index Page</a>
 
 </body>
